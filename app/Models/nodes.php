@@ -8,22 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class nodes extends Model
 {
     use HasFactory;
-    public function childrenAccounts()
+    public function childrenNodes()
     {
         return $this->hasMany('App\models\nodes', 'parent_id', 'id');
     }
 
-    public function allChildrenAccounts()
+    public function allChildrenNodes()
     {
-        return $this->childrenAccounts()->with('allChildrenAccounts');
+        return $this->childrenNodes()->with('allChildrenNodes');
     }
 
-    public function parentsAccounts() {
+    public function parentsNodes() {
         return $this->belongsTo('App\models\nodes', 'parent_id', 'id');
     }
 
-    public function allParentsAccounts() {
-        return $this->parentsAccounts()->with('allParentsAccounts');
+    public function allParentsNodes() {
+        return $this->parentsNodes()->with('allParentsNodes');
     }
 
 }
