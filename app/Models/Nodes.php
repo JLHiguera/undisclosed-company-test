@@ -45,7 +45,7 @@ class Nodes extends Model
     {
         return DB::table("node_tree")
         ->select("id", "name", "created_at", "updated_at", "deleted_at" )
-        ->withRecursiveExpression("node_tree", $recursive_query, ["id", "parent_id", 
+        ->withRecursiveExpression("node_tree", $recursive_query, ["id", "parent_id",
         "created_at", "updated_at", "deleted_at", "name", "path"]);
     }
 
@@ -64,9 +64,6 @@ class Nodes extends Model
         nodes.updated_at, nodes.deleted_At, nodes.name, CONCAT(node_tree.path, ',', nodes.id)")
         ->join("node_tree", "node_tree.id", "=", "nodes.parent_id");
     }
-
-
-
 
 }
 
