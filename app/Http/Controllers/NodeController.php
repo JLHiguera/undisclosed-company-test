@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\nodes;
-
+use App\Models\Nodes;
 
 class NodeController extends Controller
 {
@@ -26,7 +25,8 @@ class NodeController extends Controller
      */
     public function parents(Request $request) {
         $node_id = $request->node_id;
-        return nodes::parent_nodes($node_id)->paginate(15);
+
+        return nodes::parentNodes($node_id)->paginate(15);
     }
 
     /**
@@ -37,7 +37,8 @@ class NodeController extends Controller
      */
     public function children(Request $request) {
         $node_id = $request->node_id;
-        return nodes::child_nodes($node_id)->paginate(15);
+
+        return nodes::childNodes($node_id)->paginate(15);
     }
 
 
